@@ -1,0 +1,92 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.demo.HomeActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:textSize="30sp"
+            android:id="@+id/activityTitle1"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/search_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100pt"
+            android:layout_marginRight="20px"
+            android:text="Search" />
+        <Button
+            android:id="@+id/category_xao"
+            android:width="80pt"
+            android:height="40pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7pt"
+            android:layout_marginTop="40pt"
+            android:text="Món Xào"
+            android:background="@drawable/button_border"/>
+        <Button
+            android:id="@+id/category_ran"
+            android:width="80pt"
+            android:height="40pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="92pt"
+            android:layout_marginTop="40pt"
+            android:text="Món Rán"
+            android:background="@drawable/button_border"/>
+        <Button
+            android:id="@+id/category_monkhaivi"
+            android:width="80pt"
+            android:height="40pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7pt"
+            android:layout_marginTop="82pt"
+            android:text="Món Khai Vị"
+            android:background="@drawable/button_border"/>
+        <Button
+            android:id="@+id/category_nuong"
+            android:width="80pt"
+            android:height="40pt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="92pt"
+            android:layout_marginTop="82pt"
+            android:text="Món Nướng"
+            android:background="@drawable/button_border"/>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:itemIconTint="@color/colorPrimary"
+        app:itemTextColor="@color/colorPrimary"
+        app:menu="@menu/navigation" />
+
+</android.support.constraint.ConstraintLayout>

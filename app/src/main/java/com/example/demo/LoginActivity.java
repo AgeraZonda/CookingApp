@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if(task.isSuccessful())
                             {
                                 Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivity.this, DailyRecipe.class));
+                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                             }
                             else
                             {

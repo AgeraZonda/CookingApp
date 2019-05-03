@@ -67,6 +67,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                         }
                     });
         }
+        if(v.getId() == R.id.login_link)
+        {
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+        }
 
 
     }

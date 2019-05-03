@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.demo.bean.Recipe;
 import com.example.demo.bean.RecipeAdapter;
@@ -29,7 +30,15 @@ public class DailyRecipe extends AppCompatActivity implements View.OnClickListen
             mDbHelper.createDatabase();
             mDbHelper.open();
 
-            lstrecipe = mDbHelper.getRecipeByCategory(44);
+            String content = getIntent().getExtras().getString("recipe_category");
+            if(isInteger(content))
+            {
+                lstrecipe = mDbHelper.getRecipeByCategory(Integer.parseInt(content),0);
+            }
+            else{
+                lstrecipe = mDbHelper.searchRecipeByName(content);
+            }
+
             mDbHelper.close();
 
 
@@ -39,6 +48,15 @@ public class DailyRecipe extends AppCompatActivity implements View.OnClickListen
 
 
         }
+    public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(Exception e) {
+            return false;
+        }
+        // only got here if we didn't return false
+        return true;
+    }
     @Override
     public void onClick(View v) {
 

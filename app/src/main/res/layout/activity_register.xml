@@ -34,5 +34,12 @@
             android:onClick="onClick"
             android:text="Sign Up" />
 
+        <TextView
+            android:id="@+id/login_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:onClick="onClick"/>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
