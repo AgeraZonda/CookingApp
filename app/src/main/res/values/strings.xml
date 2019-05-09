@@ -3,5 +3,25 @@
     <string name="title_menu">Menu</string>
     <string name="title_search">Search</string>
     <string name="title_user">User</string>
-
+    <string name="title_logiin">Login</string>
+    <string name="title_register">Register</string>
+    <string name="material">Gạo 1 chén
+ Cà rốt 2 củ
+ Tôm tươi 300 gr
+ Rong biển khô 2 miếng
+ Hành lá 2 cây
+ Dầu mè 1 muỗng canh
+ Tỏi băm 1/2 muỗng cà phê
+ Nước mắm 4 muỗng cà phê
+ Đường trắng 2 muỗng cà phê
+ Hạt nêm 2 muỗng cà phê
+ Muối 1/2 muỗng cà phê</string>
+    <string name="how_to_cook">Bước 1: Chuẩn bị tất cả nguyên liệu. Rửa sạch và cắt hạt lựu cà rốt.</string>
+    <string name="content_des">Cháo tôm kiểu Hàn Quốc thích hợp cho mọi lứa tuổi và đặc biệt cung cấp rất nhiều dưỡng chất bởi được hầm chung với các loại rau củ và đạm khác nhau. Vị cháo thơm nhẹ mùi dầu mè, ngọt thanh từ tôm tươi, lại được bổ sung vitamin từ cà rốt</string>
+    <string name="title_activity_google_sign_in">GoogleSignInActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>

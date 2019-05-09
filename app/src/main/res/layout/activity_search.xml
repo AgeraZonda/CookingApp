@@ -20,18 +20,23 @@
 
         <EditText
             android:id="@+id/search_content"
-            android:layout_width="wrap_content"
+            android:layout_width="130pt"
             android:layout_height="wrap_content"
             android:ems="10"
+
+            android:layout_marginTop="8pt"
+            android:layout_marginLeft="8pt"
             android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/button_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100pt"
+            android:layout_marginLeft="132pt"
+            android:layout_marginTop="6pt"
             android:layout_marginRight="20px"
-            android:text="Search" />
+            android:text="Search"
+            android:background="@drawable/button_border"/>
         <Button
             android:id="@+id/category_xao"
             android:width="80pt"

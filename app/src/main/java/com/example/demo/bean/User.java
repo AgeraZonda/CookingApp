@@ -1,8 +1,36 @@
 package com.example.demo.bean;
 
-public class User {
+import java.io.Serializable;
 
-    public String name;
+public class User implements Serializable {
+
+    private String name;
+    private String email;
+    private String sex;
+    private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public User()
+    {
+        name="";
+        email="";
+        sex="";
+    }
 
     public String getName() {
         return name;
@@ -20,12 +48,11 @@ public class User {
         this.email = email;
     }
 
-    public String email;
+
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
-    public User() {
-    }
+
 
     public User(String name, String email) {
         this.name = name;

@@ -14,17 +14,20 @@ public class SearchActivity extends AppCompatActivity {
     Button btn;
     EditText search_ctn;
     Button category_nuong,category_xao,category_ran,category_khaivi;
+    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         search_ctn = findViewById(R.id.search_content);
         btn = findViewById(R.id.button_search);
+        userid = getIntent().getExtras().getString("user_id");
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String a = search_ctn.getText().toString().trim();
                 Intent i = new Intent(SearchActivity.this, DailyRecipe.class);
+                i.putExtra("user_id", userid);
                 i.putExtra("recipe_category", a);
                 startActivity(i);
             }
@@ -34,6 +37,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SearchActivity.this, DailyRecipe.class);
+                i.putExtra("user_id", userid);
                 i.putExtra("recipe_category", 10+"");
                 startActivity(i);
             }
@@ -43,6 +47,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SearchActivity.this, DailyRecipe.class);
+                i.putExtra("user_id", userid);
                 i.putExtra("recipe_category", "nướng");
                 startActivity(i);
             }
@@ -52,6 +57,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SearchActivity.this, DailyRecipe.class);
+                i.putExtra("user_id", userid);
                 i.putExtra("recipe_category", "xào");
                 startActivity(i);
             }
@@ -61,6 +67,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SearchActivity.this, DailyRecipe.class);
+                i.putExtra("user_id", userid);
                 i.putExtra("recipe_category", "rán");
                 startActivity(i);
             }
@@ -78,6 +85,7 @@ public class SearchActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_menu:
                         Intent a = new Intent(SearchActivity.this,HomeActivity.class);
+                        a.putExtra("user_id", userid);
                         startActivity(a);
                         break;
                     case R.id.navigation_search:
@@ -85,6 +93,7 @@ public class SearchActivity extends AppCompatActivity {
                         break;
                     case R.id.navigation_person:
                         Intent b = new Intent(SearchActivity.this,UserActivity.class);
+                        b.putExtra("user_id", userid);
                         startActivity(b);
                         break;
                 }

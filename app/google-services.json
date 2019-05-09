@@ -21,6 +21,10 @@
             "package_name": "com.example.demo",
             "certificate_hash": "c1592086a06dff4cf482befe1a499f903c7ed9f5"
           }
+        },
+        {
+          "client_id": "365621608515-nucrpio9ldt1tj1db5sem950e771meng.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [

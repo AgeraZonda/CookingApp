@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.demo.bean.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -15,11 +16,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEmailView;
     private EditText mPasswordView;
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
+    public static final FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
 
 
@@ -30,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         mEmailView =  findViewById(R.id.email_sign_up);
         mPasswordView =  findViewById(R.id.password_sign_up);
         mAuth = FirebaseAuth.getInstance();
+        databaseReference = database.getReference("users");
 
     }
 
@@ -37,8 +44,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if(v.getId() == R.id.sign_up_btn)
         {
-            Toast.makeText(RegisterActivity.this,"Hello",Toast.LENGTH_SHORT).show();
-            String email = mEmailView.getText().toString().trim();
+            Toast.makeText(RegisterActivity.this,"Đăng ký thành công",Toast.LENGTH_SHORT).show();
+            final String email = mEmailView.getText().toString().trim();
             String password = mPasswordView.getText().toString().trim();
             mAuth.createUserWithEmailAndPassword(email,password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -62,7 +69,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             }
                             if(task.isSuccessful())
                             {
-                                startActivity(new Intent(RegisterActivity.this, DailyRecipe.class));
+                                User user = new User();
+                                user.setEmail(email);
+                                user.setUserID(mAuth.getCurrentUser().getUid());
+                                databaseReference.child(user.getUserID()).setValue(user);
+                                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(i);
+
                             }
                         }
                     });

@@ -19,7 +19,8 @@ import java.util.List;
 public class DailyRecipe extends AppCompatActivity implements View.OnClickListener {
     private List<Recipe> lstrecipe ;
     private RecyclerView recyclerView ;
-        private LinearLayout linearLayout;
+    String userid;
+    private LinearLayout linearLayout;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -29,7 +30,7 @@ public class DailyRecipe extends AppCompatActivity implements View.OnClickListen
             RecipeAdapter mDbHelper = new RecipeAdapter(this);
             mDbHelper.createDatabase();
             mDbHelper.open();
-
+            userid = getIntent().getExtras().getString("user_id");
             String content = getIntent().getExtras().getString("recipe_category");
             if(isInteger(content))
             {
@@ -64,7 +65,7 @@ public class DailyRecipe extends AppCompatActivity implements View.OnClickListen
     private void setuprecyclerview(List<Recipe> lstRecipe) {
 
 
-        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this,lstRecipe) ;
+        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this,lstRecipe,userid) ;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
 

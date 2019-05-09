@@ -37,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<Recipe> newestRecipe = new ArrayList<Recipe>();
     RequestOptions option;
     LinearLayout layout;
+    String userid =  "";
     static int countOffset = 0;
     private RecyclerView recyclerView ;
 
@@ -44,62 +45,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        TextView dailyLink = findViewById(R.id.daily_link);
-        TextView dailyTitle = findViewById(R.id.newest_recipe_title);
-        dailyTitle.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(HomeActivity.this,countOffset+" ",Toast.LENGTH_SHORT).show();
-                RecipeAdapter mDbHelper = new RecipeAdapter(HomeActivity.this);
-                mDbHelper.createDatabase();
-                mDbHelper.open();
-                option = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
-                ArrayList<Recipe> temp;
-                temp = mDbHelper.getRecipeByCategory(44,countOffset);
-                newestRecipe.addAll(temp) ;
-                countOffset +=10;
-                mDbHelper.close();
-                RecyclerViewAdapter myadapter = new RecyclerViewAdapter(HomeActivity.this,newestRecipe) ;
-                recyclerView.setAdapter(myadapter);
-            }
-        });
+        userid = getIntent().getExtras().getString("user_id");
         layout = (LinearLayout) findViewById(R.id.linear);
-        dailyLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomeActivity.this, DailyRecipe.class);
-                i.putExtra("recipe_category", 44+"");
-                startActivity(i);
-            }
-        });
-
-
-
         recyclerView = findViewById(R.id.recycler_view_id);
-//        recyclerView.addOnScrollListener(new OnScrollListener() {
-//            @Override
-//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-//                super.onScrolled(recyclerView, dx, dy);
-//                RecipeAdapter mDbHelper = new RecipeAdapter(HomeActivity.this);
-//                mDbHelper.createDatabase();
-//                mDbHelper.open();
-//                ArrayList<Recipe> temp;
-//                temp = mDbHelper.getRecipeByCategory(44,countOffset);
-//                newestRecipe.addAll(temp) ;
-//                countOffset +=10;
-//                mDbHelper.close();
-//                RecyclerViewAdapter myadapter = new RecyclerViewAdapter(HomeActivity.this,newestRecipe) ;
-//                recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-//                recyclerView.setAdapter(myadapter);
-//            }
-//        });
         renderDaylyRecipe();
         setuprecyclerview();
-
-
-
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -109,10 +59,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     case R.id.navigation_search:
                         Intent a = new Intent(HomeActivity.this,SearchActivity.class);
+                        a.putExtra("user_id", userid);
                         startActivity(a);
                         break;
                     case R.id.navigation_person:
                         Intent b = new Intent(HomeActivity.this,UserActivity.class);
+                        b.putExtra("user_id", userid);
                         startActivity(b);
                         break;
                 }
@@ -133,10 +85,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mDbHelper.createDatabase();
         mDbHelper.open();
         option = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
-        newestRecipe = mDbHelper.getRecipeByCategory(44,countOffset);
-        countOffset +=10;
+        newestRecipe = mDbHelper.getRandomRecipe();
+        newestRecipe.addAll(mDbHelper.getRandomRecipe());
         mDbHelper.close();
-        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this,newestRecipe) ;
+        RecyclerViewAdapter myadapter = new RecyclerViewAdapter(this,newestRecipe,userid) ;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(myadapter);
 
@@ -168,6 +120,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     i.putExtra("recipe_img", finalLstrecipe.get(a).getLinkImage());
                     i.putExtra("recipe_content", finalLstrecipe.get(a).getContent());
                     i.putExtra("recipe_Html_content",finalLstrecipe.get(a).getHtmlContent());
+                    i.putExtra("user_id", userid);
                     startActivity(i);
                 }
             });
@@ -182,6 +135,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
             LinearLayout recipeLayout = new LinearLayout(this);
+            recipeLayout.setBackgroundColor(Color.WHITE);
             LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 400);
             recipeLayout.setLayoutParams(layoutParams3);
             recipeLayout.setOrientation(LinearLayout.VERTICAL);
