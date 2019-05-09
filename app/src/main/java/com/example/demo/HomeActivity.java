@@ -46,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         userid = getIntent().getExtras().getString("user_id");
+        getSupportActionBar().hide();
         layout = (LinearLayout) findViewById(R.id.linear);
         recyclerView = findViewById(R.id.recycler_view_id);
         renderDaylyRecipe();

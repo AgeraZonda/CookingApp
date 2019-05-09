@@ -120,8 +120,7 @@ public class DetailRecipe extends AppCompatActivity{
         tv_categorie.setText(category + "");
         tv_des.setText(content);
         WebView wb = new WebView(this);
-
-        wb.loadDataWithBaseURL(null , source , "text/html", "utf-8",null);
+        wb.loadDataWithBaseURL(null, "<style>img{display: inline;height: auto;max-width: 100%;}</style>" + source, "text/html", "UTF-8", null);
         LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         wb.setLayoutParams(layoutParams2);
         line.addView(wb);

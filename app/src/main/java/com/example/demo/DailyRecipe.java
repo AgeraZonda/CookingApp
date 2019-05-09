@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,7 +27,13 @@ public class DailyRecipe extends AppCompatActivity implements View.OnClickListen
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_daily_recipe);
             lstrecipe = new ArrayList<Recipe>() ;
+            getSupportActionBar().hide();
             recyclerView = findViewById(R.id.recyclerviewid);
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+            decorView.setSystemUiVisibility(uiOptions);
+            ActionBar actionBar = getActionBar();
+            actionBar.hide();
             RecipeAdapter mDbHelper = new RecipeAdapter(this);
             mDbHelper.createDatabase();
             mDbHelper.open();

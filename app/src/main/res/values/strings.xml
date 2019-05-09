@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">demo</string>
+    <string name="app_name">CookingApp</string>
     <string name="title_menu">Menu</string>
     <string name="title_search">Search</string>
     <string name="title_user">User</string>

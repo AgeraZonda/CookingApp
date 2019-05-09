@@ -20,6 +20,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         search_ctn = findViewById(R.id.search_content);
+        getSupportActionBar().hide();
         btn = findViewById(R.id.button_search);
         userid = getIntent().getExtras().getString("user_id");
         btn.setOnClickListener(new View.OnClickListener() {
