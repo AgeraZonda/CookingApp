@@ -6,12 +6,32 @@
     android:layout_height="match_parent"
     tools:context="com.example.demo.HomeActivity">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <RelativeLayout
+            android:padding="9dp"
+            android:id="@+id/header"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/boder_itemlist">
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/header_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Search"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="200pt"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:textSize="30sp"
@@ -19,23 +39,31 @@
             android:textAlignment="center"/>
 
         <EditText
+            android:padding="3dp"
+            android:textSize="20sp"
+            android:background="@drawable/edit_search_round"
+            android:hint="  Find the dish..."
             android:id="@+id/search_content"
-            android:layout_width="130pt"
-            android:layout_height="wrap_content"
+            android:layout_width="110pt"
+            android:layout_height="45dp"
             android:ems="10"
-
-            android:layout_marginTop="8pt"
+            android:drawableLeft="@drawable/ic_search"
+            android:layout_marginRight="1dp"
+            android:layout_below="@+id/header"
+            android:layout_marginTop="9pt"
             android:layout_marginLeft="8pt"
             android:inputType="textPersonName" />
 
         <Button
+            android:layout_below="@+id/header"
             android:id="@+id/button_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="132pt"
-            android:layout_marginTop="6pt"
+            android:layout_marginLeft="130pt"
+            android:layout_marginTop="8pt"
             android:layout_marginRight="20px"
             android:text="Search"
+            android:layout_marginBottom="10pt"
             android:background="@drawable/button_border"/>
         <Button
             android:id="@+id/category_xao"
@@ -44,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7pt"
-            android:layout_marginTop="40pt"
+            android:layout_marginTop="60pt"
             android:text="Món Xào"
             android:background="@drawable/button_border"/>
         <Button
@@ -54,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="92pt"
-            android:layout_marginTop="40pt"
+            android:layout_marginTop="60pt"
             android:text="Món Rán"
             android:background="@drawable/button_border"/>
         <Button
@@ -64,7 +92,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7pt"
-            android:layout_marginTop="82pt"
+            android:layout_marginTop="9dp"
+            android:layout_below="@+id/category_xao"
             android:text="Món Khai Vị"
             android:background="@drawable/button_border"/>
         <Button
@@ -74,7 +103,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="92pt"
-            android:layout_marginTop="82pt"
+            android:layout_marginTop="9dp"
+            android:layout_below="@+id/category_ran"
             android:text="Món Nướng"
             android:background="@drawable/button_border"/>
 

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.demo.bean.Recipe;
 import com.example.demo.bean.RecipeAdapter;
@@ -108,7 +109,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             imageView.setId(i);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(200, 200);
             imageView.setLayoutParams(layoutParams);
-            Glide.with(this).load(newestRecipe.get(i).getLinkImage()).apply(option).into(imageView);
+            Glide.with(this).load(newestRecipe.get(i).getLinkImage()).apply(RequestOptions.bitmapTransform(new RoundedCorners(10))).into(imageView);
             imageView.setPadding(5, 5, 5, 5);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             final ArrayList<Recipe> finalLstrecipe = newestRecipe;

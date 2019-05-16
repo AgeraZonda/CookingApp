@@ -6,6 +6,7 @@
     android:baselineAligned="false"
     android:orientation="horizontal">
 
+
     <FrameLayout
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
@@ -21,17 +22,41 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:padding="8dp"
+
                 android:background="@drawable/bgg"
                 android:id="@+id/container"
                 >
 
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
+                    <RelativeLayout
+                        android:padding="9dp"
+                        android:id="@+id/header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/boder_itemlist">
+
+                        <TextView
+                            android:layout_centerInParent="true"
+                            android:id="@+id/header_search"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Home"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="20sp" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
 
                 <TextView
-                    android:textColor="#000"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/daily_link"
@@ -54,16 +79,24 @@
                     </LinearLayout>
 
                 </HorizontalScrollView>
-                <TextView
-                    android:textColor="#000"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/newest_recipe_title"
-                    android:text="Các món ăn mới"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:padding="5dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/newest_recipe_title"
+                        android:text="Các món ăn mới"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:padding="5dp"/>
 
+
+
+                </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="450dp"

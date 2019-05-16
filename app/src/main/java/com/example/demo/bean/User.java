@@ -1,5 +1,7 @@
 package com.example.demo.bean;
 
+import android.net.Uri;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -8,6 +10,10 @@ public class User implements Serializable {
     private String email;
     private String sex;
     private String userID;
+
+
+
+
 
     public String getUserID() {
         return userID;
@@ -30,6 +36,7 @@ public class User implements Serializable {
         name="";
         email="";
         sex="";
+
     }
 
     public String getName() {
@@ -57,5 +64,6 @@ public class User implements Serializable {
     public User(String name, String email) {
         this.name = name;
         this.email = email;
+
     }
 }

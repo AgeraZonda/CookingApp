@@ -29,11 +29,6 @@ public class DailyRecipe extends AppCompatActivity implements View.OnClickListen
             lstrecipe = new ArrayList<Recipe>() ;
             getSupportActionBar().hide();
             recyclerView = findViewById(R.id.recyclerviewid);
-            View decorView = getWindow().getDecorView();
-            int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
-            decorView.setSystemUiVisibility(uiOptions);
-            ActionBar actionBar = getActionBar();
-            actionBar.hide();
             RecipeAdapter mDbHelper = new RecipeAdapter(this);
             mDbHelper.createDatabase();
             mDbHelper.open();
